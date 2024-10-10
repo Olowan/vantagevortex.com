@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vantage Vortex Capital (PVD) LTD</title>
+    <style>
+        /* Basic Styles for All Screen Sizes */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            flex-direction: column;
+        }
+
+        .video-container {
+            width: 90%; /* Fluid width for better scaling */
+            max-width: 600px; /* Set max width for larger screens */
+            height: auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        video {
+            width: 100%; /* Make video fill its container */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover;
+        }
+
+        .container {
+            width: 90%; /* Fluid width for responsiveness */
+            max-width: 800px; /* Set a max width for larger screens */
+            text-align: center;
+            padding: 20px; /* Add padding for better layout */
+            box-sizing: border-box; /* Ensure padding doesn’t cause overflow */
+        }
+
+        .title {
+            font-size: 2.5rem; /* Adjusted for larger screens */
+            color: #333;
+            font-weight: bold;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #555;
+        }
+
+        .catchphrase {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .digital-clock {
+            margin-top: 20px;
+            font-size: 2.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            color: #FF6347;
+            background-color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+
+        /* Media Queries for Responsive Design */
+
+        /* For small devices (phones, less than 600px) */
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2rem; /* Smaller title for phones */
+            }
+
+            .message {
+                font-size: 1.2rem; /* Smaller message font size */
+            }
+
+            .catchphrase {
+                font-size: 1rem; /* Adjusted for phones */
+            }
+
+            .digital-clock {
+                font-size: 1.8rem; /* Smaller clock for phones */
+            }
+
+            /* Adjust padding for smaller screens */
+            .container {
+                padding: 10px;
+            }
+
+            /* Adjust video width for small screens */
+            .video-container {
+                width: 100%; /* Full width on mobile */
+                max-width: 100%; /* Remove max width on mobile */
+            }
+        }
+
+        /* For medium devices (tablets, less than 900px) */
+        @media (max-width: 900px) {
+            .title {
+                font-size: 2.2rem; /* Adjusted for tablets */
+            }
+
+            .message {
+                font-size: 1.3rem; /* Adjusted for tablets */
+            }
+
+            .catchphrase {
+                font-size: 1.1rem; /* Adjusted for tablets */
+            }
+
+            .digital-clock {
+                font-size: 2rem; /* Slightly smaller clock */
+            }
+
+            /* Adjust padding for tablets */
+            .container {
+                padding: 15px;
+            }
+
+            /* Adjust video width for tablets */
+            .video-container {
+                width: 100%; /* Full width for video */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-container">
+        <!-- Video Tag to Play the Video Looping -->
+        <video autoplay loop muted>
+            <source src="video/VVC Logo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="container">
+        <div class="title">Vantage Vortex Capital (PVD) LTD</div>
+        <div class="message">Coming Soon</div>
+        <div class="catchphrase">Driven by Innovation, United by Excellence</div>
+        <div id="countdown-timer" class="digital-clock"></div>
+    </div>
+
+    <script>
+        // Set the end date (30 days from now)
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 30);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = endDate - now;
+
+            // Time calculations for days, hours, minutes, seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="countdown-timer"
+            document.getElementById("countdown-timer").innerHTML =
+                `${days}d : ${hours < 10 ? '0' + hours : hours}h : ${minutes < 10 ? '0' + minutes : minutes}m : ${seconds < 10 ? '0' + seconds : seconds}s`;
+
+            // If the countdown is over, display a message
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown-timer").innerHTML = "Time's up!";
+            }
+        }
+
+        // Update the countdown every second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+</html>
